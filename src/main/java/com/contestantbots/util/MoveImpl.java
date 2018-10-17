@@ -28,6 +28,10 @@ public class MoveImpl implements Move {
 		return direction;
 	}
 
+    private boolean isMyPlayer(final Player player) {
+        return player.getOwner().equals(getId());
+    }
+
 	private boolean canMove(final GameState gameState, final List<Position> nextPositions, final Player player, final Direction direction) {
 		Set<Position> outOfBounds = gameState.getOutOfBoundsPositions();
 		Position newPosition = gameState.getMap().getNeighbour(player.getPosition(), direction);
