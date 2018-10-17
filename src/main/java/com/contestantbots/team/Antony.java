@@ -9,10 +9,10 @@ import com.scottlogic.hackathon.game.Move;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExampleBot extends Bot {
+public class Antony extends Bot {
 	private final GameStateLogger gameStateLogger;
 
-	public ExampleBot() {
+	public Antony() {
 		super("Example Bot");
 		gameStateLogger = new GameStateLogger(getId());
 	}
@@ -24,11 +24,10 @@ public class ExampleBot extends Bot {
 		List<Move> moves = new ArrayList<>();
 
 		// moves.addAll(doExplore(gameState));
-		moves.addAll(new DoMoves(gameState, getId()).goEast());
+		moves.addAll(new DoMoves(gameState, getId()).goRandom());
 
 		return moves;
 	}
-
 
 	/*
 	 * Run this main as a java application to test and debug your code within your IDE. After each turn, the current state of the game will be printed as an ASCII-art representation in the console. You can study the map before hitting 'Enter' to play the next phase.
@@ -64,7 +63,7 @@ public class ExampleBot extends Bot {
 				"--debug",
 
 				// Use this class as the 'main' Bot
-				"--className", ExampleBot.class.getName() };
+				"--className", Antony.class.getName() };
 
 		Client.main(args);
 	}

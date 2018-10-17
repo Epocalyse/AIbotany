@@ -9,6 +9,7 @@ import com.scottlogic.hackathon.game.Direction;
 import com.scottlogic.hackathon.game.GameState;
 import com.scottlogic.hackathon.game.Move;
 import com.scottlogic.hackathon.game.Player;
+import com.scottlogic.hackathon.game.Position;
 
 public class DoMoves {
 	UUID playerID;
@@ -40,6 +41,34 @@ public class DoMoves {
 		}
 
 		return eastMoves;
+	}
+
+	public List<Move> goRandom() {
+		List<Move> randomMoves = new ArrayList<>();
+
+		for (Player bot : this.gameState.getPlayers()) {
+			if (bot.getOwner() == this.playerID) {
+
+				MoveImpl nextMove = new MoveImpl(bot.getId(), Direction.random());
+				Direction move = Direction.random();
+
+				Position nextPosition = gameState.getMap().getNeighbour(bot.getPosition(), move);
+
+				int moveTimeout = 50;
+				int moveTries = 0;
+
+				while (!(gameState.getPlayerAt(nextPosition).isEmpty()) && moveTries != moveTimeout) {
+					nextMove = new MoveImpl(bot.getId(), Direction.random());
+					moveTries++;
+
+				}
+
+				randomMoves.add(nextMove);
+
+			}
+		}
+
+		return randomMoves;
 	}
 
 }
