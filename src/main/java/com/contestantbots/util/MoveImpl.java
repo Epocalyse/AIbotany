@@ -28,9 +28,9 @@ public class MoveImpl implements Move {
 		return direction;
 	}
 
-    private boolean isMyPlayer(final Player player) {
-        return player.getOwner().equals(getId());
-    }
+	private boolean isMyPlayer(final Player player) {
+		return player.getOwner().equals(playerId);
+	}
 
 	private boolean canMove(final GameState gameState, final List<Position> nextPositions, final Player player, final Direction direction) {
 		Set<Position> outOfBounds = gameState.getOutOfBoundsPositions();
