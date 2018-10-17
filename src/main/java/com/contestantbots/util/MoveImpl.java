@@ -38,4 +38,12 @@ public class MoveImpl implements Move {
 			return false;
 		}
 	}
+
+	private Move doMove(final GameState gameState, final List<Position> nextPositions, final Player player) {
+		Direction direction;
+		do {
+			direction = Direction.random();
+		} while (!canMove(gameState, nextPositions, player, direction));
+		return new MoveImpl(player.getId(), direction);
+	}
 }
