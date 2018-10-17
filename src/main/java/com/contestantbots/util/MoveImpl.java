@@ -1,7 +1,6 @@
 package com.contestantbots.util;
 
 import java.util.UUID;
-
 import com.scottlogic.hackathon.game.Direction;
 import com.scottlogic.hackathon.game.Move;
 
@@ -23,4 +22,17 @@ public class MoveImpl implements Move {
 	public Direction getDirection() {
 		return direction;
 	}
+
+	
 }
+
+
+
+
+
+
+
+
+
+
+// BLANK SPACE AREA

@@ -1,18 +1,13 @@
 package com.contestantbots.team;
 
-import com.contestantbots.util.GameStateLogger;
-import com.contestantbots.util.MoveImpl;
+import com.contestantbots.util.*;
 
 import com.scottlogic.hackathon.client.Client;
 import com.scottlogic.hackathon.game.Bot;
-import com.scottlogic.hackathon.game.Direction;
 import com.scottlogic.hackathon.game.GameState;
 import com.scottlogic.hackathon.game.Move;
-import com.scottlogic.hackathon.game.Player;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ExampleBot extends Bot {
 	private final GameStateLogger gameStateLogger;
@@ -29,32 +24,32 @@ public class ExampleBot extends Bot {
 		List<Move> moves = new ArrayList<>();
 
 		// moves.addAll(doExplore(gameState));
-		moves.addAll(goEast(gameState));
+		moves.addAll(new DoMoves(gameState, getId()).goEast());
 
 		return moves;
 	}
 
-	private List<Move> doExplore(final GameState gameState) {
-		List<Move> exploreMoves = new ArrayList<>();
-
-		exploreMoves.addAll(gameState.getPlayers().stream().map(player -> new MoveImpl(player.getId(), Direction.NORTH)).collect(Collectors.toList()));
-
-		System.out.println(exploreMoves.size() + " players exploring");
-		return exploreMoves;
-	}
-
-	private List<Move> goEast(final GameState gameState) {
-
-		List<Move> eastMoves = new ArrayList<>();
-
-		for (Player bot : gameState.getPlayers()) {
-			if (bot.getOwner() == getId()) {
-				eastMoves.add(new MoveImpl(bot.getId(), Direction.EAST));
-			}
-		}
-
-		return eastMoves;
-	}
+	// private List<Move> doExplore(final GameState gameState) {
+	// List<Move> exploreMoves = new ArrayList<>();
+	//
+	// exploreMoves.addAll(gameState.getPlayers().stream().map(player -> new MoveImpl(player.getId(), Direction.NORTH)).collect(Collectors.toList()));
+	//
+	// System.out.println(exploreMoves.size() + " players exploring");
+	// return exploreMoves;
+	// }
+	//
+	// private List<Move> goEast(final GameState gameState) {
+	//
+	// List<Move> eastMoves = new ArrayList<>();
+	//
+	// for (Player bot : gameState.getPlayers()) {
+	// if (bot.getOwner() == getId()) {
+	// eastMoves.add(new MoveImpl(bot.getId(), Direction.EAST));
+	// }
+	// }
+	//
+	// return eastMoves;
+	// }
 
 	/*
 	 * Run this main as a java application to test and debug your code within your IDE. After each turn, the current state of the game will be printed as an ASCII-art representation in the console. You can study the map before hitting 'Enter' to play the next phase.
