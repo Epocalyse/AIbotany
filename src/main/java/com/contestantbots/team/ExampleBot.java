@@ -29,27 +29,6 @@ public class ExampleBot extends Bot {
 		return moves;
 	}
 
-	// private List<Move> doExplore(final GameState gameState) {
-	// List<Move> exploreMoves = new ArrayList<>();
-	//
-	// exploreMoves.addAll(gameState.getPlayers().stream().map(player -> new MoveImpl(player.getId(), Direction.NORTH)).collect(Collectors.toList()));
-	//
-	// System.out.println(exploreMoves.size() + " players exploring");
-	// return exploreMoves;
-	// }
-	//
-	// private List<Move> goEast(final GameState gameState) {
-	//
-	// List<Move> eastMoves = new ArrayList<>();
-	//
-	// for (Player bot : gameState.getPlayers()) {
-	// if (bot.getOwner() == getId()) {
-	// eastMoves.add(new MoveImpl(bot.getId(), Direction.EAST));
-	// }
-	// }
-	//
-	// return eastMoves;
-	// }
 
 	/*
 	 * Run this main as a java application to test and debug your code within your IDE. After each turn, the current state of the game will be printed as an ASCII-art representation in the console. You can study the map before hitting 'Enter' to play the next phase.
